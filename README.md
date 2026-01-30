@@ -5,4 +5,4 @@ kompetensi siswa atau LKS.
 
 ## Mata Lomba
 
-- [IT NSA](/IT%20NSA/README.md)
+- [IT NSA](/IT%20NSA)
