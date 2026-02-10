@@ -1,0 +1,107 @@
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ISP
+!
+!
+!
+enable secret 5 $1$mERr$YwBFivGTjy5yevg2TFh2j1
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2811/K9 sn FTX1017I5GS-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/1/0
+ ip address 172.11.1.1 255.255.255.252
+!
+interface GigabitEthernet0/2/0
+ ip address 201.12.140.30 255.255.128.0
+!
+interface GigabitEthernet0/3/0
+ ip address 172.10.1.1 255.255.255.252
+!
+interface GigabitEthernet1/0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/1/0
+ no ip address
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router eigrp 1
+ network 172.10.1.0 0.0.0.3
+ network 172.11.1.0 0.0.0.3
+ network 201.12.128.0 0.0.127.255
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+

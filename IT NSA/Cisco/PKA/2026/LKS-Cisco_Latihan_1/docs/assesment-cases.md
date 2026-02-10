@@ -43,7 +43,3 @@ Kasus dan penyelesaian yang harus dikerjakan pada packet tracer activity.
   - Web
     - filename: index.html
     - content: "LKS LAB 2026"
-
-## Latihan 2
-
-- [ ] ok

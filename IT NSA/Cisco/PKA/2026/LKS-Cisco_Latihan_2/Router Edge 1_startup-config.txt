@@ -1,0 +1,129 @@
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname EDGE1
+!
+!
+!
+enable secret 5 $1$mERr$YwBFivGTjy5yevg2TFh2j1
+!
+!
+ip dhcp excluded-address 10.7.1.2 10.7.1.99
+ip dhcp excluded-address 10.8.1.2 10.8.1.99
+!
+ip dhcp pool VLAN10
+ network 10.7.1.0 255.255.255.0
+ default-router 10.7.1.1
+ dns-server 211.14.1.100
+ip dhcp pool VLAN20
+ network 10.8.1.0 255.255.255.0
+ default-router 10.8.1.1
+ dns-server 211.14.1.100
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2811/K9 sn FTX10176877-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/1/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/2/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/3/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/0
+ no ip address
+ ip nat inside
+!
+interface GigabitEthernet1/0/0.10
+ encapsulation dot1Q 10
+ ip address 10.7.1.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet1/0/0.20
+ encapsulation dot1Q 20
+ ip address 10.8.1.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet1/1/0
+ ip address 201.12.221.2 255.255.128.0
+ ip nat outside
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip nat inside source list 1 interface GigabitEthernet1/1/0 overload
+ip classless
+ip route 0.0.0.0 0.0.0.0 201.12.140.30 
+!
+ip flow-export version 9
+!
+!
+access-list 1 permit 10.7.1.0 0.0.0.255
+access-list 1 permit 10.8.1.0 0.0.0.255
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
